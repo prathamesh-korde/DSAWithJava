@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Zone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Game Zone</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <h2>Welcome to the Ultimate Gaming Experience</h2>
+            <p>Play your favorite games online!</p>
+            <button onclick="showGames()">Start Playing</button>
+        </div>
+    </section>
+
+    <section id="games" class="hidden">
+        <h2>Available Games</h2>
+        <div class="games-container">
+            <div class="game-card" onclick="playGame('Game 1')">
+                <h3>Game 1</h3>
+                <p>Click to play!</p>
+            </div>
+            <div class="game-card" onclick="playGame('Game 2')">
+                <h3>Game 2</h3>
+                <p>Click to play!</p>
+            </div>
+            <div class="game-card" onclick="playGame('Game 3')">
+                <h3>Game 3</h3>
+                <p>Click to play!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Game Zone offers a platform where you can enjoy a variety of online games. Our mission is to bring the best gaming experience to you!</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: support@gamezone.com</p>
+        <p>Phone: +1-234-567-890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Game Zone. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
