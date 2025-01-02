@@ -45,14 +45,27 @@ public class J_141Trie{
         }
         return true;
     }
-    
+
+    public static boolean wordBreak(String key) {
+        int length = key.length();
+        if(length == 0) {
+            return true;
+        }
+        for(int i=1; i<=length; i++) {
+            if( search(key.substring(0, i)) &&
+                wordBreak(key.substring(i)) ) {
+                    return true;
+                }
+        }
+        return false;
+    }
     public static void main(String[] args) {
-        String words[] = {"the","a","there","their","any"};
-        for(String str : words){
+        String Words[] ={"i","like","samsung","mobile"};
+       String key = "ilikesamsung";
+        for(String str : Words){
             insert(str);
         }
-        System.out.println(search("their"));
-        System.out.println(search("thor"));
+        System.out.println(wordBreak(key));
 
     }
 }
