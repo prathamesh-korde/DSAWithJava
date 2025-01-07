@@ -30,9 +30,20 @@ public class J_146Graph {
         graph[3].add(new Edge(3, 2));
 
     }
+
+    public static void printNeighbors(ArrayList<Edge> graph[],int ver){
+        for(int i=0 ; i<graph[ver].size();i++){
+            Edge e = graph[ver].get(i);
+            System.out.print(e.dest+" ");
+        }
+    }
     public static void main(String[] args) {
         int v=4;
 
         ArrayList<Edge> graph[] = new ArrayList[v];
+         createGraph(graph);
+        //print neighbors of vertex
+        printNeighbors(graph, 1);
+
     }
 }
