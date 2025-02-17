@@ -9,10 +9,10 @@ public class J_168BellmanFord {
         int dest;
         int wt;
 
-        public Edge(int s, int d, int w) {
-            this.src = s;
-            this.dest = d;
-            this.wt = w;
+        public Edge(int src, int dest, int wt) {
+            this.src = src;
+            this.dest = dest;
+            this.wt = wt;
         }
     }
 
@@ -25,57 +25,58 @@ public class J_168BellmanFord {
         graph[1].add(new Edge(1, 2, -4));
         graph[2].add(new Edge(2, 3, 2));
         graph[3].add(new Edge(3, 4, 4));
-        graph[4].add(new Edge(4, 1, -1));
+        graph[4].add(new Edge(4, 1, -10));
     }
 
-    public static void bellmanFord(ArrayList<Edge> graph[], int src) {
-        int dist[] = new int[graph.length];
-        for (int i = 0; i < dist.length; i++) {
-            if (i != src) {
-                dist[i] = Integer.MAX_VALUE;
+    public static void bellmanFord(ArrayList<Edge> graph[],int src , int V){
+        int dist[] = new int[V];
+        for(int i=0 ; i< V ; i++){
+            if(i!=src){
+                dist[i]=Integer.MAX_VALUE;
             }
-
         }
-//O(V)
-        for (int i = 0; i < graph.length - 1; i++) {
-//edges - O(E)
-            for (int j = 0; j < graph.length; j++) {
-                for (int k = 0; k < graph[j].size(); k++) {
-                    Edge e = graph[j].get(k);
-                    int u = e.src;
-                    int v = e.dest;
-                    int wt = e.wt;
-                    if (dist[u] != Integer.MAX_VALUE && dist[u] + wt < dist[v]) {
-                        dist[v] = dist[u] + wt;
+
+        for(int k=0;k<V-1;k++){
+            for(int i=0;i<V;i++){
+                for(int j=0;j<graph[i].size();j++){
+                    Edge e = graph[i].get(j);
+                    int u=e.src;
+                    int v=e.dest;
+                    if(dist[u]+e.wt<dist[v] && dist[u]!=Integer.MAX_VALUE){
+                        dist[v]=dist[u]+e.wt;
                     }
                 }
             }
         }
-//Detecting Negative Weight Cycle
-        for (int j = 0; j < graph.length; j++) {
-            for (int k = 0; k < graph[j].size(); k++) {
-                Edge e = graph[j].get(k);
-                int u = e.src;
-                int v = e.dest;
-                int wt = e.wt;
-                if (dist[u] != Integer.MAX_VALUE && dist[u] + wt < dist[v]) {
-                    System.out.println("negative weight cycle exists");
-                    break;
+
+
+        //detect -v weight cycle
+        for(int i=0;i<V;i++){
+            for(int j=0;j<graph[i].size();j++){
+                Edge e = graph[i].get(j);
+
+                int u=e.src;
+                int v=e.dest;
+
+                if(dist[u]+e.wt<dist[v] && dist[u]!=Integer.MAX_VALUE){
+                    System.out.println("exist -ve edge cycle ");
                 }
             }
         }
-        for (int i = 0; i < dist.length; i++) {
-            System.out.print(dist[i] + " ");
+
+        for(int i=0;i<dist.length;i++){
+           System.out.print(dist[i]+" ");
         }
         System.out.println();
     }
 
+    
     public static void main(String args[]) {
         int V = 5;
         ArrayList<Edge> graph[] = new ArrayList[V];
         createGraph(graph);
 
         int src = 0;
-        bellmanFord(graph, src);
+        bellmanFord(graph, src, V);
     }
 }
