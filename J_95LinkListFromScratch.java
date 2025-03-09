@@ -118,6 +118,7 @@ public void reverseIterate(){
         return;
     }
 
+    
     Node prevNode = head;
     Node currNode = head.next;
     while(currNode != null){
