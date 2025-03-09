@@ -122,6 +122,33 @@
 
         return Math.max(diam3,Math.max(diam2, diam1));
     }
+
+    static class TreeInfo{
+        int height;
+        int diameter;
+        TreeInfo(int height,int diameter){
+            this.height=height;
+            this.diameter=diameter;
+        }  
+
+        public static TreeInfo diameter2(Node root){
+            if(root==null){
+               return new TreeInfo(0,0);
+            }
+            TreeInfo left = diameter2(root.left);
+            TreeInfo right = diameter2(root.right);
+
+            int myHeight = Math.max(left.height,right.height)+1;
+
+            int dai1 = left.diameter;
+            int dia2 = right.diameter;
+            int dia3 = left.height+right.height+1;
+
+            int myDiameter = Math.max(dia2,Math.max(dai1, dia3));
+            TreeInfo myInfo = new TreeInfo(myHeight, myDiameter);
+            return myInfo;
+        }
+    }
         public static void main(String[] args) {
             //nodes in pre-order sequence
             int nodes[]={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -141,7 +168,9 @@
             System.out.println("sum of nodes-");
             System.out.println(countofNodesSum(root));
             System.out.println("height of tree "+height(root));
-            System.out.println("max diameter of tree-"+diameter(root));
+            System.out.println("max diameter of tree- O(n2)- "+diameter(root));
+            TreeInfo result = TreeInfo.diameter2(root);
+            System.out.println("max diameter of tree- O(n)- "+result.diameter);
         }
     }
         
