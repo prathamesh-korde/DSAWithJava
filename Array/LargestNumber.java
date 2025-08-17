@@ -7,7 +7,6 @@ public class LargestNumber {
             list.add(String.valueOf(val));
         }
 
-        
         list.sort((a,b)-> (b+a).compareTo(a+b));
 
         
