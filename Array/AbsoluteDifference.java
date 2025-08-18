@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class AbsoluteDifference {
     public void rearrange(int[] arr, int x) {
-        // code here
+        
          Integer[] array = new Integer[arr.length];
 
         for(int i=0; i< arr.length; i++){
@@ -26,6 +26,7 @@ public class AbsoluteDifference {
         int[] arr = {10, 20, 30, 40};
         int x = 25;
         absoluteDifference.rearrange(arr, x);
-        System.out.println(Arrays.toString(arr)); // Output: [20, 30, 10, 40]
+        System.out.println(Arrays.toString(arr)); 
+       
     }
 }
